@@ -1,5 +1,5 @@
 <template>
-  <p class="py-6 text-center">Just put in your starting phone number and how many consecutive numbers you need. Then, we'll provide you with a downloadable CSV!</p>
+  <p class="py-6 text-center" v-if="$route?.meta?.description">{{ $route?.meta?.description }}</p>
   <div class="w-full max-w-md mx-auto my-7">
     <div class="card flex-shrink-0 w-full max-w-sm mx-auto shadow-2xl bg-base-100">
       <div class="card-body">
@@ -78,6 +78,10 @@ getNumber();
 
 async function fetchNumberFromLocalStorage(): Promise<any> {
   try {
+    if (!localStorage.getItem("phoneNumbers")) {
+      return null;
+    }
+
     const localNumbers = await JSON.parse(
         localStorage.getItem("phoneNumbers") || ""
     );

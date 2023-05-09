@@ -30,6 +30,7 @@ const router = createRouter({
               meta: {
                 roleLevel: 15,
                 title: 'Organization List',
+                description: 'Use this one to fetch and filter organizations to view more information about them, including their parent and child relationships.'
               },
               name: 'organization_list',
               component: () => import('../views/organization/ListView.vue'),
@@ -43,7 +44,8 @@ const router = createRouter({
             {
               path: 'list',
               meta: {
-                title: 'Business List'
+                title: 'Business List',
+                description: 'Use this one to fetch and filter businesses to view more information about them.',
               },
               name: 'business_list',
               component: () => import('../views/business/ListView.vue'),
@@ -58,7 +60,8 @@ const router = createRouter({
               path: 'verify',
               name: 'phone_numbers_verify',
               meta: {
-                title: 'Verify Phone Numbers'
+                title: 'Verify Phone Numbers',
+                description: 'Upload a CSV file of phone numbers. Then, depending on the ids added in the form, we will try to fetch them from the exchange and show you how they match up with the results.'
               },
               component: () => import('../views/phonenumbers/VerifyView.vue'),
             },
@@ -66,7 +69,8 @@ const router = createRouter({
               path: 'generate',
               name: 'phone_numbers_generate',
               meta: {
-                title: 'Generate Phone Numbers'
+                title: 'Generate Phone Numbers',
+                description: 'Just put in your starting phone number and how many consecutive numbers you need. Then, we\'ll provide you with a downloadable CSV!'
               },
               component: () => import('../views/phonenumbers/GeneratorView.vue'),
             },
@@ -74,7 +78,8 @@ const router = createRouter({
               path: 'details',
               meta: {
                 roleLevel: 15,
-                title: 'Phone Number Details'
+                title: 'Phone Number Details',
+                description: 'Upload a CSV file of phone numbers and we will try to fetch them from the exchange and present all of the relevant information about them.'
               },
               name: 'phone_numbers_details',
               component: () => import('../views/phonenumbers/DetailsView.vue'),
@@ -88,7 +93,8 @@ const router = createRouter({
             {
               path: 'details',
               meta: {
-                title: 'Fast Track Details'
+                title: 'Fast Track Details',
+                description: 'Use this one to fetch and filter businesses to view more information about them. Once they are clicked you can view information about their fast track submissions and if they have any rejections.',
               },
               name: 'fast_track_details',
               component: () => import('../views/fasttrack/DetailsView.vue'),

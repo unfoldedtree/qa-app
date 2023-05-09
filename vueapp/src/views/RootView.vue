@@ -2,7 +2,7 @@
   <main>
     <div class="bg-base-200">
       <div class="drawer">
-        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" v-model="sideBarOpen" />
         <div class="drawer-content">
           <!-- Page content here -->
           <div class="flex flex-col items-center justify-start">
@@ -15,7 +15,7 @@
           <div class="flex flex-col items-center justify-center"></div>
         </div>
 
-        <SidebarNav />
+        <SidebarNav @closeSideBar="sideBarOpen = false" :sideBarOpen="sideBarOpen" />
       </div>
     </div>
   </main>
@@ -24,9 +24,11 @@
 <script setup lang="ts">
 import NavBar from "@/components/misc/NavBar.vue";
 import SidebarNav from "@/components/misc/SidebarNav.vue";
-import { computed, inject } from "vue";
+import {computed, inject, ref} from "vue";
 import router from "@/router";
 import type {CreateNotification} from "@/plugins/notifications";
+
+const sideBarOpen = ref(false);
 
 const pageTitle = computed(() => {
   return router?.currentRoute?.value?.meta?.title as string || "Default Page Title";
