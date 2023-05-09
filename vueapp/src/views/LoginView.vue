@@ -120,18 +120,14 @@ function uploadFile(file: File): void {
       const text = fileReader.result as string;
       const jsonResult = JSON.parse(text);
 
-      if (jsonResult.apiKey) {
-        apiKey.value = jsonResult.apiKey;
-      }
-
-      if (jsonResult.secretKey) {
-        secretKey.value = jsonResult.secretKey;
-      }
-
       (hiddenFileUploadButton.value as HTMLInputElement).value = '';
 
       if (jsonResult.apiKey && jsonResult.secretKey) {
+        apiKey.value = jsonResult.apiKey;
+        secretKey.value = jsonResult.secretKey;
         sendIt();
+      } else {
+        createNotification({ message: "Invalid JSON file.", type: "error" });
       }
     }
   };

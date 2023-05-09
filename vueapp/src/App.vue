@@ -2,12 +2,8 @@
   <div>
     <RouterView />
   </div>
-  <div>
-    <TransitionGroup
-      name="list"
-      tag="div"
-      class="toast toast-top toast-end"
-    >
+  <div class="toast toast-top toast-end">
+    <TransitionGroup name="list">
       <ToastNotification
           v-for="(item) in notifications"
           :key="item.id"
