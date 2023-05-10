@@ -74,7 +74,7 @@ const dropActive = ref(false);
 const hiddenFileUploadButton = ref<HTMLInputElement | null>(null);
 
 async function sendIt(): Promise<void> {
-  const resp = await axios.post('/api/forp', null, {
+  const resp = await axios.post('/v1/auth', null, {
     headers: {
       'X-API-KEY': apiKey.value,
       'X-SECRET-KEY': secretKey.value,
@@ -84,7 +84,6 @@ async function sendIt(): Promise<void> {
 
   if (resp.data) {
     localStorage.setItem('apiKey', apiKey.value);
-    // localStorage.setItem('secretKey', secretKey.value);
     localStorage.setItem('token', resp.data.token);
     localStorage.setItem('refreshToken', resp.data.refresh_token);
     await router.push({

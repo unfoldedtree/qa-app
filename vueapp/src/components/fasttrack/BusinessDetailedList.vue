@@ -144,7 +144,7 @@ async function loadSubmissions(businessId: string, pageHash = ""): Promise<void>
   loadingSubmissions.value = true;
 
   try {
-    const resp = await axios.get(`/api/businesses/${businessId}/display-name-bulk`, {
+    const resp = await axios.get(`/exchange/v1/businesses/${businessId}/display-name-bulk`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'

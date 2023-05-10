@@ -86,7 +86,7 @@ function processResult(phoneNumberResults: any): void {
 }
 
 function fetchNumberDetails(key: any): any {
-  const newPromise = axios.get(`/api/administration/phone-numbers/${key}`, {
+  const newPromise = axios.get(`/exchange/v1/administration/phone-numbers/${key}`, {
     headers: {
       'Authorization': localStorage.getItem("token"),
       'Content-Type': 'application/json'

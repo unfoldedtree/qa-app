@@ -52,7 +52,7 @@ async function fetchBusinesses(shouldClear = false, legalName = '', status = '',
   processing.value = true;
 
   try {
-    const resp = await axios.get(`/api/businesses`, {
+    const resp = await axios.get(`/exchange/v1/businesses`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ async function fetchBusinessById(busId: string): Promise<void> {
 
 
   try {
-    const resp = await axios.get(`/api/businesses/${busId.trim()}`, {
+    const resp = await axios.get(`/exchange/v1/businesses/${busId.trim()}`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'

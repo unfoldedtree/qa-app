@@ -53,7 +53,7 @@ async function fetchOrgs(): Promise<void> {
   processing.value = true;
 
   try {
-    const resp = await axios.get(`/api/resellers`, {
+    const resp = await axios.get(`/exchange/v1/resellers`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ async function fetchOrgById(orgId: string): Promise<void> {
 
 
   try {
-    const resp = await axios.get(`/api/resellers/${orgId.trim()}`, {
+    const resp = await axios.get(`/exchange/v1/resellers/${orgId.trim()}`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'
@@ -137,7 +137,7 @@ async function fetchOrgById(orgId: string): Promise<void> {
 }
 
 async function getRelationships(orgId: string): Promise<void> {
-  const resp = await axios.get(`/api/hierarchy/${orgId}`, {
+  const resp = await axios.get(`/hierarchy/v1/${orgId}`, {
     headers: {
       'Authorization': localStorage.getItem("token"),
       'Content-Type': 'application/json',

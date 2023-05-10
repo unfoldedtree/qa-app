@@ -97,7 +97,7 @@ async function loopNumbers(businessId: string, businessUnitId: string, programId
 
 
   try {
-    const resp = await axios.get(`/api/businesses/${businessId}/phone-numbers`, {
+    const resp = await axios.get(`/exchange/v1/businesses/${businessId}/phone-numbers`, {
       headers: {
         'Authorization': localStorage.getItem("token"),
         'Content-Type': 'application/json'

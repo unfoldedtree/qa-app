@@ -52,7 +52,7 @@ watch(showRejections, (newValue, oldValue) => {
 })
 
 async function loadRejections(pageHash = ""): Promise<void> {
-  const resp = await axios.get(`/api/businesses/${props.submission.businessId}/display-name-bulk/${props.submission.submissionId}/rejections`, {
+  const resp = await axios.get(`/exchange/v1/businesses/${props.submission.businessId}/display-name-bulk/${props.submission.submissionId}/rejections`, {
     headers: {
       'Authorization': localStorage.getItem("token"),
       'Content-Type': 'application/json'

@@ -77,7 +77,7 @@ watch(tokenTTL, async (newValue, oldValue) => {
   if (refreshTokenExp - now.value > 0) {
     if (newValue < 10) {
       console.log("Refreshing Token");
-      const resp = await axios.post('/api/forp/refresh', null, {
+      const resp = await axios.post('/v1/auth/refresh', null, {
         headers: {
           'X-API-KEY': apiKey,
           'X-REFRESH-TOKEN': refreshToken.value,
