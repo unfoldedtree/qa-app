@@ -1,0 +1,17 @@
+[[redirects]]
+    from = "/v1/auth"
+    to = "VITE_EXCHANGE_API_URL/v1/auth"
+    status = 200
+    force = true
+
+[[redirects]]
+    from = "/hierarchy/v1"
+    to = "VITE_EXCHANGE_API_URL/hierarchy/v1"
+    status = 200
+    force = true
+
+[[redirects]]
+    from = "/exchange/v1"
+    to = "VITE_EXCHANGE_API_URL/exchange/v1"
+    status = 200
+    force = true

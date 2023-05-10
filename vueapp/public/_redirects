@@ -1,4 +1,0 @@
-/v1/auth/* VITE_EXCHANGE_API_URL/v1/auth/:splat 200
-/hierarchy/v1/* VITE_EXCHANGE_API_URL/hierarchy/v1/:splat 200
-/exchange/v1/* VITE_EXCHANGE_API_URL/exchange/v1/:splat 200
-/* /index.html 200
