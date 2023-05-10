@@ -1,5 +1,5 @@
-/v1/auth https://api.forp-staging.com/v1/auth
-/hierarchy/v1 https://api.forp-staging.com/hierarchy/v1
-/exchange/v1 https://api.forp-staging.com/exchange/v1
+/v1/auth https://api.forp-staging.com/v1/auth 200
+/hierarchy/v1 https://api.forp-staging.com/hierarchy/v1 200
+/exchange/v1 https://api.forp-staging.com/exchange/v1 200
 /_ /index.html 200
 /\* /index.html 404
