@@ -7,7 +7,11 @@ import axios from "axios";
 
 const app = createApp(App)
 
-axios.defaults.baseURL = import.meta.env.VITE_EXCHANGE_URL || "";
+console.log(import.meta.env.DEV);
+
+if (!import.meta.env.DEV) {
+    axios.defaults.baseURL = import.meta.env.VITE_EXCHANGE_API_URL;
+}
 
 app.use(router);
 
