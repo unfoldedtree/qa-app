@@ -119,13 +119,13 @@ function parseJwt (token: string) {
 function mapRoleLevel(): string {
   switch (roleLevel.value) {
     case 0:
-      return 'Base';
+      return 'Default';
     case 5:
-      return 'Admin';
+      return 'Normal';
     case 10:
       return 'Developer';
     case 15:
-      return 'Support';
+      return 'Admin';
     case 20:
       return 'Super';
     default:
