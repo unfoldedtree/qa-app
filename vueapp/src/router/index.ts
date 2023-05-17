@@ -24,6 +24,7 @@ const router = createRouter({
         {
           path: 'organization',
           name: 'organization',
+          redirect: '/',
           children: [
             {
               path: 'list',
@@ -40,6 +41,7 @@ const router = createRouter({
         {
           path: 'business',
           name: 'business',
+          redirect: '/',
           children: [
             {
               path: 'list',
@@ -55,6 +57,7 @@ const router = createRouter({
         {
           path: 'phone-numbers',
           name: 'phone_numbers',
+          redirect: '/',
           children: [
             {
               path: 'verify',
@@ -89,6 +92,7 @@ const router = createRouter({
         {
           path: 'fast-track',
           name: 'fast_track',
+          redirect: '/',
           children: [
             {
               path: 'details',
