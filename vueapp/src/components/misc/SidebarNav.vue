@@ -67,6 +67,11 @@ const sideBarRoutes = [
       {
         label: "Business List",
         name: "business_list",
+      },
+      {
+        label: "Business Reset to CT",
+        name: "business_reset",
+        role: 15
       }
     ]
   },
@@ -76,6 +81,16 @@ const sideBarRoutes = [
       {
         label: "Fast Track Details",
         name: "fast_track_details",
+      }
+    ]
+  },
+  {
+    label: "Users",
+    routes: [
+      {
+        label: "Notification Wizard",
+        name: "notification_wizard",
+        role: 15
       }
     ]
   },

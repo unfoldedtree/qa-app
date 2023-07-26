@@ -7,6 +7,7 @@ export default (mode: any) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
 
   const exchangeBaseUrl = process.env.VITE_EXCHANGE_API_URL;
+  const supportDevBaseUrl = process.env.VITE_SUPPORT_API_DEV_URL;
 
   console.log(`exchangeBaseUrl: ${exchangeBaseUrl}`);
 
@@ -37,6 +38,12 @@ export default (mode: any) => {
           secure: false,
           rewrite: (path) => path.replace(/^\/exchange\/v1/, ""),
         },
+        "/support": {
+          target: `${supportDevBaseUrl}`,
+          changeOrigin: true,
+          secure: false,
+            rewrite: (path) => path.replace(/^\/support/, ""),
+        }
       }
     }
   })

@@ -51,7 +51,34 @@ const router = createRouter({
               },
               name: 'business_list',
               component: () => import('../views/business/ListView.vue'),
+            },
+            {
+              path: 'reset',
+              meta: {
+                roleLevel: 15,
+                title: 'Reset Business To CT',
+                description: 'Use this to reset a business to Call Transparency and set Self Service to false.',
+              },
+              name: 'business_reset',
+              component: () => import('../views/business/ResetView.vue'),
             }
+          ]
+        },
+        {
+          path: 'users',
+          name: 'users',
+          redirect: '/',
+          children: [
+            {
+              path: 'notification-wizard',
+              name: 'notification_wizard',
+              meta: {
+                title: 'Notification Wizard',
+                description: "Use this to send mass notifications to users user the associated entities.",
+                roleLevel: 15
+              },
+              component: () => import('../views/users/NotificationWizardView.vue'),
+            },
           ]
         },
         {

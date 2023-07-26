@@ -43,6 +43,7 @@
               <th>DBA</th>
               <th>Zendesk Ticket</th>
               <th>Grants</th>
+              <th>Self Service</th>
               <th>Status</th>
               <th></th>
             </tr>
@@ -66,10 +67,14 @@
                 <div class="badge badge-xs mr-2" v-for="grant in item[1]?.context?.serviceGrants" :key="grant">{{ grant }}</div>
               </td>
               <td>
-                <span class="ml-2">{{ item[1]?.status || "N/A" }}</span>
+                <span class="ml-2">{{ item[1]?.isSelfServe || "N/A" }}</span>
               </td>
               <td>
-                <button class="btn btn-xs btn-link" @click="openJsonModal(item[0], item[1])">View</button>
+                <span>{{ item[1]?.status || "N/A" }}</span>
+              </td>
+              <td>
+                <button class="btn btn-xs btn-link" @click="openJsonModal(item[0], item[1])">Details</button>
+                <button class="btn btn-xs btn-link" @click="openProgramModal(item[1])">Programs</button>
               </td>
             </tr>
             </tbody>
@@ -88,10 +93,10 @@
       </div>
     </div>
 
-    <input type="checkbox" id="my-modal-3" class="modal-toggle" ref="jsonModalInput" />
+    <input type="checkbox" id="business-list-json-modal" class="modal-toggle" ref="jsonModalInput" />
     <div class="modal">
       <div class="modal-box w-11/12 max-w-5xl relative">
-        <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <label for="business-list-json-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         <h3 class="text-lg font-bold">{{ `Details: ${jsonModalNumber.number}` || "No Number Provided" }}</h3>
         <div class="mockup-code mt-2">
           <pre class="px-5"><code>{{ jsonModalNumber.data }}</code></pre>
@@ -101,16 +106,22 @@
       </div>
     </div>
 
+    <input type="checkbox" id="business-list-program-modal" class="modal-toggle" ref="programModalInput" />
+    <BusinessProgramsModal :selectedBusiness="selectedBusiness" />
+
   </div>
 </template>
 
 <script lang="ts" setup>
 import {computed, inject, ref, watch} from "vue";
 import type {CreateNotification} from "@/plugins/notifications";
+import BusinessProgramsModal from "@/components/modals/program/BusinessProgramsModal.vue";
 
 const createNotification = inject("create-notification") as CreateNotification;
 const emit = defineEmits(['fetchBusinesses', 'fetchBusinessById']);
 const props = defineProps(['businesses', 'pageHash', 'processing', 'requestSubmitted', 'totalCount']);
+const programModalInput = ref<HTMLInputElement | null>(null);
+const selectedBusiness = ref({} as any);
 const jsonModalInput = ref<HTMLInputElement | null>(null);
 const jsonModalNumber = ref({} as any);
 const shouldFilterById = ref(false);
@@ -129,6 +140,11 @@ function openJsonModal(number: string, data: any): void {
   jsonModalNumber.value.data.phoneNumber = number;
   delete jsonModalNumber.value.data.fetchingStatus;
   (jsonModalInput.value as HTMLInputElement).checked = true;
+}
+
+function openProgramModal(data: any): void {
+  selectedBusiness.value = data;
+  (programModalInput.value as HTMLInputElement).checked = true;
 }
 
 function handleJsonDownload(): void {
